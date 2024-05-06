@@ -21,10 +21,10 @@ def play(num_simulations):
     for _ in range(num_simulations):
         total_points_juan = 0
         total_points_maria = 0
-        
+
         dice1_juan = random.randint(1, 6)
         dice2_juan = random.randint(1, 6)
-        
+
         if dice1_juan or dice2_juan == 4:
             if dice1_juan == 4:
                 roll_one_dice(dice2_juan)
@@ -101,9 +101,9 @@ def init():
         option = input("S/N: ")
         if option.lower() == "s":
             results = play(1000)
-            print("Resultado de 1000 simulaciones")
+            print("Resultados de las 1000 simulaciones")
             print("Juan: ", results["Juan"]/1000)
-            print("Maria: ", results["Maria"]/1000)
+            print("María: ", results["Maria"]/1000)
             print("Empate: ", results["Empate"]/1000)
             break
         elif option.lower() == "n":
@@ -116,9 +116,9 @@ def init():
         option = input("S/N: ")
         if option.lower() == "s":
             results = play(10000)
-            print("Resultado de 10000 simulaciones")
+            print("Resultados de las 10000 simulaciones")
             print("Juan: ", results["Juan"]/10000)
-            print("Maria: ", results["Maria"]/10000)
+            print("María: ", results["Maria"]/10000)
             print("Empate: ", results["Empate"]/10000)
             break
         elif option.lower() == "n":
@@ -131,9 +131,9 @@ def init():
         option = input("S/N: ")
         if option.lower() == "s":
             results = play(100000)
-            print("Resultado de 100000 simulaciones")
+            print("Resultados de las 100000 simulaciones")
             print("Juan: ", results["Juan"]/100000)
-            print("Maria: ", results["Maria"]/100000)
+            print("María: ", results["Maria"]/100000)
             print("Empate: ", results["Empate"]/100000)
             break
         elif option.lower() == "n":
