@@ -22,21 +22,23 @@ def play(num_simulations):
             if dice1_juan == 4:
                 if dice2_juan <= 3:
                     dice2_juan = random.randint(1, 6)
+                    total_points_juan = dice2_juan
                 else:
                     total_points_juan = dice2_juan
             else:
                 if dice1_juan <= 3:
                     dice1_juan = random.randint(1, 6)
+                    total_points_juan = dice1_juan
                 else:
                     total_points_juan = dice1_juan
         else:
             dice1_juan = random.randint(1, 6)
             dice2_juan = random.randint(1, 6)
-        if dice1_juan == 4 or dice2_juan == 4:
-            if dice1_juan == 4:
-                total_points_juan = dice2_juan
-            else:
-                total_points_juan = dice1_juan
+            if dice1_juan == 4 or dice2_juan == 4:
+                if dice1_juan == 4:
+                    total_points_juan = dice2_juan
+                else:
+                    total_points_juan = dice1_juan
         dice1_maria = random.randint(1, 6)
         dice2_maria = random.randint(1, 6)
         if dice1_maria == 4 or dice2_maria == 4:
@@ -50,15 +52,20 @@ def play(num_simulations):
                     else:
                         if dice2_maria == total_points_juan and dice2_maria >= 4:
                             total_points_maria = dice2_maria
+                        else:
+                            total_points_maria = random.randint(1, 6) 
             else:
                 if dice1_maria > total_points_juan:
                     total_points_maria = dice1_maria
+                else:
                     if dice1_maria < total_points_juan:
                         dice1_maria = random.randint(1, 6)
                         total_points_maria = dice1_maria
                     else:
                         if dice1_maria == total_points_juan and dice1_maria >= 4:
                             total_points_maria = dice1_maria
+                        else:
+                            total_points_maria = random.randint(1, 6) 
         else:
             dice1_maria = random.randint(1, 6)
             dice2_maria = random.randint(1, 6)
