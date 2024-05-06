@@ -1,13 +1,6 @@
 import random
 
 
-def roll_one_dice(dice_to_roll):
-    if dice_to_roll <= 3:
-        dice_to_roll = random.randint(1, 6)
-    else:
-        return dice_to_roll
-    return dice_to_roll
-
 
 feedback = None
 
@@ -25,22 +18,28 @@ def play(num_simulations):
         dice1_juan = random.randint(1, 6)
         dice2_juan = random.randint(1, 6)
 
-        if dice1_juan or dice2_juan == 4:
+        if dice1_juan == 4 or dice2_juan == 4:
             if dice1_juan == 4:
-                roll_one_dice(dice2_juan)
+                if dice2_juan <= 3:
+                    dice2_juan = random.randint(1, 6)
+                else:
+                    total_points_juan = dice2_juan
             else:
-                roll_one_dice(dice1_juan)
+                if dice1_juan <= 3:
+                    dice1_juan = random.randint(1, 6)
+                else:
+                    total_points_juan = dice1_juan
         else:
             dice1_juan = random.randint(1, 6)
             dice2_juan = random.randint(1, 6)
-        if dice1_juan or dice2_juan == 4:
+        if dice1_juan == 4 or dice2_juan == 4:
             if dice1_juan == 4:
                 total_points_juan = dice2_juan
             else:
                 total_points_juan = dice1_juan
         dice1_maria = random.randint(1, 6)
         dice2_maria = random.randint(1, 6)
-        if dice1_maria or dice2_maria == 4:
+        if dice1_maria == 4 or dice2_maria == 4:
             if dice1_maria == 4:
                 if dice2_maria > total_points_juan:
                     total_points_maria = dice2_maria
@@ -51,7 +50,6 @@ def play(num_simulations):
                     else:
                         if dice2_maria == total_points_juan and dice2_maria >= 4:
                             total_points_maria = dice2_maria
-
             else:
                 if dice1_maria > total_points_juan:
                     total_points_maria = dice1_maria
@@ -61,18 +59,26 @@ def play(num_simulations):
                     else:
                         if dice1_maria == total_points_juan and dice1_maria >= 4:
                             total_points_maria = dice1_maria
-            if total_points_juan > total_points_maria:
-                juan_wins += 1
-                if feedback:
-                    print("Juan gana el juego")
-            elif total_points_juan < total_points_maria:
-                maria_wins += 1
-                if feedback:
-                    print("María gana el juego")
-            else:
-                tie += 1
-                if feedback:
-                    print("El juego resulta en empate")
+        else:
+            dice1_maria = random.randint(1, 6)
+            dice2_maria = random.randint(1, 6)
+            if dice1_maria == 4 or dice2_maria == 4:
+                if dice1_maria == 4:
+                    total_points_maria = dice2_maria
+                else:
+                    total_points_maria = dice1_maria
+        if total_points_juan > total_points_maria:
+            juan_wins += 1
+            if feedback:
+                print("Juan gana el juego")
+        elif total_points_juan < total_points_maria:
+            maria_wins += 1
+            if feedback:
+                print("María gana el juego")
+        else:
+            tie += 1
+            if feedback:
+                print("El juego resulta en empate")
 
     return {"Juan": juan_wins, "Maria": maria_wins, "Empate": tie}
 
